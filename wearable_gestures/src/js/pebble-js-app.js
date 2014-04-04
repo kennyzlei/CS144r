@@ -6,4 +6,4 @@ Pebble.addEventListener("ready",
 
 Pebble.addEventListener("appmessage",
                         function(e) {
-                          console.log(e[1]);});
+                          console.log(e.payload["dummy"])});//JSON.stringify(e.payload));});

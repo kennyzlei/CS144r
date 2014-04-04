@@ -79,17 +79,37 @@ static void s_main(void *params) {
 
 void accel_handler(AccelData *data, uint32_t num_samples)
 {
-  // data is an array of num_samples elements.
-  // num_samples was set when calling accel_data_service_subscribe.
- 
-
-
-  if (data[0].x > 0)
-  {
 
 DictionaryIterator *iter;
 app_message_outbox_begin(&iter);
-Tuplet tuple = TupletInteger(1, 69);
+for (int i = 0;i<25;i++)
+{
+	Tuplet tuple = TupletInteger(i, data[i].x);
+dict_write_tuplet(iter, &tuple);
+}
+
+
+
+dict_write_end(iter);
+app_message_outbox_send();
+
+
+
+  // data is an array of num_samples elements.
+  // num_samples was set when calling accel_data_service_subscribe.
+/* 
+
+  if (data[0].x > 0)
+  {
+for (int i = 0;i<10;i++)
+{
+
+
+}
+
+DictionaryIterator *iter;
+app_message_outbox_begin(&iter);
+Tuplet tuple = TupletInteger(1, data[0].x);
 dict_write_tuplet(iter, &tuple);
 dict_write_end(iter);
 app_message_outbox_send();
@@ -104,7 +124,9 @@ snprintf(buf, sizeof(buf), "%d", data[0].x);
   } else {
     text_layer_set_text(text_layer_1, "Zero");
   }
-}
+
+*/
+};
  
 void tap_handler(AccelAxisType axis, int32_t direction)
 {
@@ -144,8 +166,8 @@ void window_load(Window *window)
   text_layer_2 = text_layer_create(GRect(0, 20, 144, 20));
   layer_add_child(window_layer, text_layer_get_layer(text_layer_2));
  
-  accel_data_service_subscribe(1, accel_handler);
-  accel_service_set_sampling_rate(ACCEL_SAMPLING_10HZ);
+  accel_data_service_subscribe(25, accel_handler);
+  accel_service_set_sampling_rate(ACCEL_SAMPLING_50HZ);
  
   accel_tap_service_subscribe(tap_handler);
 }
