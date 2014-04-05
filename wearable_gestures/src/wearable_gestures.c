@@ -42,41 +42,6 @@ static void init(void) {
    app_message_open(inbound_size, outbound_size);
 
  }
-
-/*
-void my_out_sent_handler(DictionaryIterator *sent, void *context) {
-  // outgoing message was delivered
-}
-void my_out_fail_handler(DictionaryIterator *failed, AppMessageResult reason, void *context) {
-  // outgoing message failed
-}
-void my_in_rcv_handler(DictionaryIterator *received, void *context) {
-  // incoming message received
-}
-void my_in_drp_handler(void *context, AppMessageResult reason) {
-  // incoming message dropped
-}
-static void s_main(void *params) {
-  static PebbleAppHandlers s_handlers = {
-    .messaging_info = {
-      .buffer_sizes = {
-        .inbound = 64, // inbound buffer size in bytes
-        .outbound = 16, // outbound buffer size in bytes
-      },
-    };
-      .default_callbacks.callbacks = {
-        .out_sent = my_out_sent_handler,
-        .out_failed = my_out_fail_handler,
-        .in_received = my_in_rcv_handler,
-        .in_dropped = my_in_drp_handler,
-      },
-    },
-  };
-  app_event_loop(params, &s_handlers);
-}
-
-*/
-
 void accel_handler(AccelData *data, uint32_t num_samples)
 {
 
@@ -85,51 +50,13 @@ app_message_outbox_begin(&iter);
 for (int i = 0;i<25;i++)
 {
 	Tuplet tuplex = TupletInteger(i, data[i].x);
-//Tuplet tupley = TupletInteger(i+30, data[i].y);
-//Tuplet tuplez = TupletInteger(i+60, data[i].z);
 dict_write_tuplet(iter, &tuplex);
-//dict_write_tuplet(iter, &tupley);
-//dict_write_tuplet(iter, &tuplez);
 }
 
 
 
 dict_write_end(iter);
 app_message_outbox_send();
-
-
-
-  // data is an array of num_samples elements.
-  // num_samples was set when calling accel_data_service_subscribe.
-/* 
-
-  if (data[0].x > 0)
-  {
-for (int i = 0;i<10;i++)
-{
-
-
-}
-
-DictionaryIterator *iter;
-app_message_outbox_begin(&iter);
-Tuplet tuple = TupletInteger(1, data[0].x);
-dict_write_tuplet(iter, &tuple);
-dict_write_end(iter);
-app_message_outbox_send();
-
-
- static char buf[] = "123456";	
-snprintf(buf, sizeof(buf), "%d", data[0].x);
-    text_layer_set_text(text_layer_1, buf);
-  } else if (data[0].x < 0)
-  {
-    text_layer_set_text(text_layer_1, "Negative");
-  } else {
-    text_layer_set_text(text_layer_1, "Zero");
-  }
-
-*/
 };
  
 void tap_handler(AccelAxisType axis, int32_t direction)
