@@ -49,11 +49,14 @@ DictionaryIterator *iter;
 app_message_outbox_begin(&iter);
 for (int i = 0;i<25;i++)
 {
-	Tuplet tuplex = TupletInteger(i, data[i].x);
-dict_write_tuplet(iter, &tuplex);
+  char* str = malloc(20*sizeof(char));
+  snprintf(str, 20, "x: %d, y: %d, z: %d", data[i].x, data[i].y, data[i].z);
+	//Tuplet tuplex = TupletInteger(i, data[i].x);
+  char* string = "Blah";
+  Tuplet tuplex = TupletCString(i, str);
+  dict_write_tuplet(iter, &tuplex);
+  free(str);
 }
-
-
 
 dict_write_end(iter);
 app_message_outbox_send();
