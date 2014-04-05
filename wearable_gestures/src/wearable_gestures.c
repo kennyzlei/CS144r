@@ -38,7 +38,7 @@ static void init(void) {
 
 
    const uint32_t inbound_size = 64;
-   const uint32_t outbound_size = 64;
+   const uint32_t outbound_size = 512;
    app_message_open(inbound_size, outbound_size);
 
  }
@@ -84,8 +84,12 @@ DictionaryIterator *iter;
 app_message_outbox_begin(&iter);
 for (int i = 0;i<25;i++)
 {
-	Tuplet tuple = TupletInteger(i, data[i].x);
-dict_write_tuplet(iter, &tuple);
+	Tuplet tuplex = TupletInteger(i, data[i].x);
+//Tuplet tupley = TupletInteger(i+30, data[i].y);
+//Tuplet tuplez = TupletInteger(i+60, data[i].z);
+dict_write_tuplet(iter, &tuplex);
+//dict_write_tuplet(iter, &tupley);
+//dict_write_tuplet(iter, &tuplez);
 }
 
 
@@ -167,7 +171,7 @@ void window_load(Window *window)
   layer_add_child(window_layer, text_layer_get_layer(text_layer_2));
  
   accel_data_service_subscribe(25, accel_handler);
-  accel_service_set_sampling_rate(ACCEL_SAMPLING_50HZ);
+  accel_service_set_sampling_rate(ACCEL_SAMPLING_100HZ);
  
   accel_tap_service_subscribe(tap_handler);
 }
