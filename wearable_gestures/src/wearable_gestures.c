@@ -50,9 +50,10 @@ app_message_outbox_begin(&iter);
 for (int i = 0;i<25;i++)
 {
   char* str = malloc(50*sizeof(char));
-  snprintf(str, 50, "x: %d, y: %d, z: %d, time %d", data[i].x, data[i].y, data[i].z, (int)data[i].timestamp);
+  //snprintf(str, 50, "x: %d, y: %d, z: %d, time %d", data[i].x, data[i].y, data[i].z, (int)data[i].timestamp);
 	//Tuplet tuplex = TupletInteger(i, data[i].x);
-  char* string = "Blah";
+snprintf(str, 50, "%d,%d,%d,", data[i].x, data[i].y, data[i].z);
+	
   Tuplet tuplex = TupletCString(i+1, str);
   dict_write_tuplet(iter, &tuplex);
   free(str);
@@ -101,7 +102,7 @@ void window_load(Window *window)
   layer_add_child(window_layer, text_layer_get_layer(text_layer_2));
  
   accel_data_service_subscribe(25, accel_handler);
-  accel_service_set_sampling_rate(ACCEL_SAMPLING_100HZ);
+  accel_service_set_sampling_rate(ACCEL_SAMPLING_50HZ);
  
   accel_tap_service_subscribe(tap_handler);
 }

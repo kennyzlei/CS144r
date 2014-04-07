@@ -6,4 +6,15 @@ Pebble.addEventListener("ready",
 
 Pebble.addEventListener("appmessage",
                         function(e) {
-                          console.log(JSON.stringify(e.payload));});
+
+var output;
+for (var i=0;i < 25;i++)
+{
+var onemeasure = e.payload[i] + "\n";
+output += onemeasure;
+
+}              
+console.log(output);
+});
+
+
