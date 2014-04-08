@@ -12,7 +12,6 @@ for (var i=0;i < 25;i++)
 {
 var onemeasure = e.payload[i] + "\n";
 output += onemeasure;
-
 }              
 console.log(output);
 });

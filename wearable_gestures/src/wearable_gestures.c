@@ -52,7 +52,7 @@ for (int i = 0;i<25;i++)
   char* str = malloc(50*sizeof(char));
   //snprintf(str, 50, "x: %d, y: %d, z: %d, time %d", data[i].x, data[i].y, data[i].z, (int)data[i].timestamp);
 	//Tuplet tuplex = TupletInteger(i, data[i].x);
-snprintf(str, 50, "%d,%d,%d,", data[i].x, data[i].y, data[i].z);
+snprintf(str, 50, "%d,%d,%d", data[i].x, data[i].y, data[i].z);
 	
   Tuplet tuplex = TupletCString(i+1, str);
   dict_write_tuplet(iter, &tuplex);
