@@ -102,7 +102,7 @@ void window_load(Window *window)
   layer_add_child(window_layer, text_layer_get_layer(text_layer_2));
  
   accel_data_service_subscribe(25, accel_handler);
-  accel_service_set_sampling_rate(ACCEL_SAMPLING_50HZ);
+  accel_service_set_sampling_rate(ACCEL_SAMPLING_25HZ);
  
   accel_tap_service_subscribe(tap_handler);
 }
