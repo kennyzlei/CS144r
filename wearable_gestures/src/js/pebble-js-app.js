@@ -23,7 +23,7 @@ Pebble.addEventListener("appmessage",
 	var d = new Date();
 
 	var http = new XMLHttpRequest();
-	var url = "http://140.247.0.19:1337/";
+	var url = "http://gestures2.cloudapp.net:1337/";
 	var params = "latitude="+latitude+"&longitude="+longitude+"&time="+d.getTime();
 	http.open('POST', url, true);
 	//Send the proper header information along with the request
