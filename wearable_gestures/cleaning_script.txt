@@ -1,5 +1,5 @@
-sed '/[INFO    ]/d' hs50a.txt > temp.txt 2>&1
+sed '/[INFO    ]/d' bk2.txt > temp.txt 2>&1
 
 sed '/undefined/d' temp.txt > temp2.txt
 
-sed '/^$/d' temp2.txt > hs50a.csv
+sed '/^$/d' temp2.txt > bk2.csv
