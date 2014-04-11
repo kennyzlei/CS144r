@@ -3,7 +3,7 @@
   "shortName": "wearable_gestures",
   "longName": "wearable_gestures",
   "companyName": "MakeAwesomeHappen",
-  "capabilities": "["location"]",
+  "capabilities": ["location"],
   "versionCode": 1,
   "versionLabel": "1.0.0",
   "watchapp": {
