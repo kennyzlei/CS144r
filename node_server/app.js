@@ -24,7 +24,7 @@ http.createServer(function (request, response) {
 
       //check database for match
       response.writeHead(200, {'Content-Type': 'text/plain'});
-      response.end('got it')
+      response.end('got it');
       //response.end('</body></html>');
     });
 }).listen(1337);
