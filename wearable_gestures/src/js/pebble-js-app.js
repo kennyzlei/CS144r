@@ -15,15 +15,16 @@ Pebble.addEventListener("appmessage",
 	}              
 	console.log(output);
 
-	var location;
+	var latitude, longitude;
 	navigator.geolocation.getCurrentPosition(function(position){
-		location = position.coords;
+		latitude = position.coords.latitude;
+		longitude = position.coords.longitude;
 	});
 	var d = new Date();
 
 	var http = new XMLHttpRequest();
 	var url = "http://140.247.0.19:1337/";
-	var params = "latitude="+location.latitude+"&longitude="+location.longitude+"&time="+d.getTime();
+	var params = "latitude="+latitude+"&longitude="+longitude+"&time="+d.getTime();
 	http.open('POST', url, true);
 	//Send the proper header information along with the request
 	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
