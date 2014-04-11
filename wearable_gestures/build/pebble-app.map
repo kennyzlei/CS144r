@@ -812,9 +812,9 @@ OUTPUT(/home/benjy/CS144r/wearable_gestures/build/pebble-app.elf elf32-littlearm
  .comment       0x0000000000000000       0x4f appinfo.auto.c.7.o
  .comment       0x0000000000000000       0x4f /home/benjy/pebble-dev/PebbleSDK-2.0.2/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtend.o
 
-.debug_info     0x0000000000000000     0x11e0
- .debug_info    0x0000000000000000      0xeb4 src/wearable_gestures.c.7.o
- .debug_info    0x0000000000000eb4      0x32c appinfo.auto.c.7.o
+.debug_info     0x0000000000000000     0x11e1
+ .debug_info    0x0000000000000000      0xeb5 src/wearable_gestures.c.7.o
+ .debug_info    0x0000000000000eb5      0x32c appinfo.auto.c.7.o
 
 .debug_abbrev   0x0000000000000000      0x3bc
  .debug_abbrev  0x0000000000000000      0x308 src/wearable_gestures.c.7.o
