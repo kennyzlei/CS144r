@@ -61,6 +61,7 @@ snprintf(str, 50, "%d,%d,%d", data[i].x, data[i].y, data[i].z);
 
 dict_write_end(iter);
 app_message_outbox_send();
+accel_data_service_unsubscribe();
 };
  
 void tap_handler(AccelAxisType axis, int32_t direction)
@@ -79,6 +80,9 @@ void tap_handler(AccelAxisType axis, int32_t direction)
     tap_text[1] = 'X';
   } else if (axis == ACCEL_AXIS_Y)
   {
+	 
+  accel_data_service_subscribe(25, accel_handler);
+  accel_service_set_sampling_rate(ACCEL_SAMPLING_25HZ);
     tap_text[1] = 'Y';
   } else if (axis == ACCEL_AXIS_Z)
   {
@@ -101,8 +105,8 @@ void window_load(Window *window)
   text_layer_2 = text_layer_create(GRect(0, 20, 144, 20));
   layer_add_child(window_layer, text_layer_get_layer(text_layer_2));
  
-  accel_data_service_subscribe(25, accel_handler);
-  accel_service_set_sampling_rate(ACCEL_SAMPLING_25HZ);
+  //accel_data_service_subscribe(25, accel_handler);
+  //accel_service_set_sampling_rate(ACCEL_SAMPLING_25HZ);
  
   accel_tap_service_subscribe(tap_handler);
 }
@@ -111,7 +115,7 @@ void window_unload(Window *window)
 {
   // Call this before destroying text_layer, because it can change the text
   // and this must only happen while the layer exists.
-  accel_data_service_unsubscribe();
+  //accel_data_service_unsubscribe();
   accel_tap_service_unsubscribe();
  
   text_layer_destroy(text_layer_2);

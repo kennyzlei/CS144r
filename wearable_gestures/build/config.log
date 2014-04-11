@@ -1,13 +1,13 @@
-# project  configured on Wed Apr  9 16:58:06 2014 by
-# waf 1.7.11 (abi 98, python 20702f0 on darwin)
-# using /Users/DavidBoone/pebble-dev/PebbleSDK-2.0.2/Pebble/waf configure build
+# project  configured on Fri Apr 11 15:40:28 2014 by
+# waf 1.7.11 (abi 98, python 20703f0 on linux2)
+# using /home/benjy/pebble-dev/PebbleSDK-2.0.2/Pebble/waf configure build
 #
 ----------------------------------------
 Setting top to
-/Users/DavidBoone/Development/cs144/CS144r/wearable_gestures
+/home/benjy/CS144r/wearable_gestures
 ----------------------------------------
 Setting out to
-/Users/DavidBoone/Development/cs144/CS144r/wearable_gestures/build
+/home/benjy/CS144r/wearable_gestures/build
 ----------------------------------------
 Checking for program gcc,cc
 arm-none-eabi-gcc
