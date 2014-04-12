@@ -53,7 +53,7 @@ Pebble.addEventListener("appmessage",
 			if(http.readyState == 4 && http.status == 200) {
 				Pebble.showSimpleNotificationOnPebble("SERVER", "You just met our server! lol");
 				console.log("Server response: "+http.responseText);
-				setTimeout(sendPost(url, "check=true&shakeindex="+http.responseText+"&time="+time"&account="+Pebble.getAccountToken()), 5000);
+				setTimeout(sendPost(url, "check=true&shakeindex="+http.responseText+"&time="+time+"&account="+Pebble.getAccountToken()), 5000);
 			}
 		}
 		http.send(params);
