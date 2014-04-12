@@ -19,24 +19,25 @@ Pebble.addEventListener("appmessage",
 	navigator.geolocation.getCurrentPosition(function(position){
 		latitude = position.coords.latitude;
 		longitude = position.coords.longitude;
-	});
-	var d = new Date();
 
-	var http = new XMLHttpRequest();
-	var url = "http://gestures2.cloudapp.net:1337/";
-	var params = "latitude="+latitude+"&longitude="+longitude+"&time="+d.getTime();
-	http.open('POST', url, true);
-	//Send the proper header information along with the request
-	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	http.setRequestHeader("Content-length", params.length);
-	http.setRequestHeader("Connection", "close");
+		var d = new Date();
 
-	http.onreadystatechange = function() {//Call a function when the state changes.
-		if(http.readyState == 4 && http.status == 200) {
-			console.log("Server response: "+http.responseText);
+		var http = new XMLHttpRequest();
+		var url = "http://gestures2.cloudapp.net:1337/";
+		var params = "latitude="+latitude+"&longitude="+longitude+"&time="+d.getTime();
+		http.open('POST', url, true);
+		//Send the proper header information along with the request
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		http.setRequestHeader("Content-length", params.length);
+		http.setRequestHeader("Connection", "close");
+
+		http.onreadystatechange = function() {//Call a function when the state changes.
+			if(http.readyState == 4 && http.status == 200) {
+				console.log("Server response: "+http.responseText);
+			}
 		}
-	}
-	http.send(params);
+		http.send(params);
+	});
 });
 
 
