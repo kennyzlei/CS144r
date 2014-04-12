@@ -4,6 +4,23 @@ Pebble.addEventListener("ready",
     }
 );
 
+function sendPost(url, params){
+	var http = new XMLHttpRequest();
+	http.open('POST', url, true);
+	//Send the proper header information along with the request
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	http.setRequestHeader("Content-length", params.length);
+	http.setRequestHeader("Connection", "close");
+
+	http.onreadystatechange = function() {//Call a function when the state changes.
+		if(http.readyState == 4 && http.status == 200) {
+			Pebble.showSimpleNotificationOnPebble("SERVER", "Match: "+http.responseText);
+			console.log("Server response: "+http.responseText);
+		}
+	}
+	http.send(params);
+}
+
 Pebble.addEventListener("appmessage",
                         function(e) {
 
@@ -24,7 +41,8 @@ Pebble.addEventListener("appmessage",
 
 		var http = new XMLHttpRequest();
 		var url = "http://gestures2.cloudapp.net:1337/";
-		var params = "latitude="+latitude+"&longitude="+longitude+"&time="+d.getTime();
+		var time = d.getTime();
+		var params = "check=false&latitude="+latitude+"&longitude="+longitude+"&time="+time+"&account="+Pebble.getAccountToken();
 		http.open('POST', url, true);
 		//Send the proper header information along with the request
 		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -33,8 +51,9 @@ Pebble.addEventListener("appmessage",
 
 		http.onreadystatechange = function() {//Call a function when the state changes.
 			if(http.readyState == 4 && http.status == 200) {
-				Pebble.showSimpleNotificationOnPebble("SERVER", "You just met our server! lol");
+				//Pebble.showSimpleNotificationOnPebble("SERVER", http.responseText);
 				console.log("Server response: "+http.responseText);
+				setTimeout(sendPost(url, "check=true&shakeindex="+http.responseText+"&time="+time"&account="+Pebble.getAccountToken()), 5000);
 			}
 		}
 		http.send(params);
