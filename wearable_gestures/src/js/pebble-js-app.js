@@ -51,7 +51,7 @@ Pebble.addEventListener("appmessage",
 
 		http.onreadystatechange = function() {//Call a function when the state changes.
 			if(http.readyState == 4 && http.status == 200) {
-				//Pebble.showSimpleNotificationOnPebble("SERVER", http.responseText);
+				Pebble.showSimpleNotificationOnPebble("SERVER", "You just met our server! lol");
 				console.log("Server response: "+http.responseText);
 				setTimeout(sendPost(url, "check=true&shakeindex="+http.responseText+"&time="+time"&account="+Pebble.getAccountToken()), 5000);
 			}
