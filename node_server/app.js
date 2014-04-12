@@ -1,7 +1,7 @@
 var http = require('http');
 var qs = require('querystring');
 
-var shake = [];
+var shake = new Array();
 
 function Stack(lat, longit)
 {
@@ -43,15 +43,16 @@ http.createServer(function (request, response) {
         if (formData.check == "true") {
             index = shake[formData.shakeindex].indexOf([formData.account, formData.time]);
             //check before and after
-            before = shake[formData.shakeindex].get(index-1)[1];
-            after = shake[formData.shakeindex].get(index+1)[1];
+            before = shake[formData.shakeindex].get(index-1);
+            after = shake[formData.shakeindex].get(index+1);
+            account = "No match"
             if (before == null) {
                 account = shake[formData.shakeindex].get(index+1)[0];
             }
             else if (after == null) {
                 account = shake[formData.shakeindex].get(index-1)[0];
             }
-            else if (abs(before - formData.time) < abs(after - formData.time)) {
+            else if (abs(before[1] - formData.time) < abs(after[1] - formData.time)) {
                 account = shake[formData.shakeindex].get(index-1)[0];
             }
             else {
@@ -76,10 +77,10 @@ http.createServer(function (request, response) {
             if (set == false) {
                 new_shake = new Stack(formData.latitude, formData.longitude);
                 new_shake.push([formData.account, formData.time]);
-                shake.append(new_shake);
+                shake.push(new_shake);
             }
             response.writeHead(200, {'Content-Type': 'text/plain'});
-            response.end(String.valueOf(i));
+            response.end(i.toString());
             console.log(requestBody);
         }
     });
