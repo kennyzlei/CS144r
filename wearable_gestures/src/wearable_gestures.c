@@ -21,6 +21,11 @@ char tap_text[3];
 
  void in_received_handler(DictionaryIterator *received, void *context) {
    // incoming message received
+	Tuple *key_tuple = dict_find(received, 1);
+	if (key_tuple) {
+	accel_data_service_unsubscribe();	
+	}
+
 	return;
  }
 
@@ -61,7 +66,7 @@ snprintf(str, 50, "%d,%d,%d", data[i].x, data[i].y, data[i].z);
 
 dict_write_end(iter);
 app_message_outbox_send();
-accel_data_service_unsubscribe();
+//accel_data_service_unsubscribe();
 };
  
 void tap_handler(AccelAxisType axis, int32_t direction)
