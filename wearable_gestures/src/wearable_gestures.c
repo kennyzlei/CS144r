@@ -54,8 +54,8 @@ DictionaryIterator *iter;
 app_message_outbox_begin(&iter);
 for (int i = 0;i<25;i++)
 {
-  char* str = malloc(50*sizeof(char));
-snprintf(str, 50,"%d",data[i].y);//"%d,%d,%d", data[i].x, data[i].y, data[i].z);
+  char* str = malloc(8*sizeof(char));
+snprintf(str, 8,"%d",data[i].y);//"%d,%d,%d", data[i].x, data[i].y, data[i].z);
 	
   Tuplet tuplex = TupletCString(i+1, str);
   dict_write_tuplet(iter, &tuplex);

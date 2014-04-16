@@ -34,7 +34,7 @@ Pebble.addEventListener("appmessage",
                 var onemeasure = e.payload[i] + "\n";
                 output += onemeasure;
             }
-            console.log(count + ": " + output);
+            //console.log(count + ": " + output);
             buffer += output;
             count++;
         } else if (count == 3) {
@@ -50,8 +50,8 @@ Pebble.addEventListener("appmessage",
                         e.error.message);
                 }
             );
-            console.log("BUFFFFFFFEERRRRR: " + buffer);
-
+             //console.log("BUFFFFFFFEERRRRR: " + buffer);
+		console.log(buffer);
 
             var latitude, longitude;
             navigator.geolocation.getCurrentPosition(function (position) {
