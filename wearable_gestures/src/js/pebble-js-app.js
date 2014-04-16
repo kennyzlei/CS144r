@@ -1,4 +1,5 @@
 var buffer;
+var vector = new Array();
 var count = 0;
 
 Pebble.addEventListener("ready",
@@ -33,6 +34,8 @@ Pebble.addEventListener("appmessage",
             for (var i = 0; i < 25; i++) {
                 var onemeasure = e.payload[i] + "\n";
                 output += onemeasure;
+                if (e.payload[i])
+                    vector.push(e.payload[i]);
             }
             //console.log(count + ": " + output);
             buffer += output;
@@ -52,6 +55,7 @@ Pebble.addEventListener("appmessage",
             );
              //console.log("BUFFFFFFFEERRRRR: " + buffer);
 		console.log(buffer);
+        console.log("peak difference is: " + Math.abs((max_peak(vector) - min_peak(vector))));
 
             var latitude, longitude;
             navigator.geolocation.getCurrentPosition(function (position) {
@@ -90,3 +94,25 @@ Pebble.addEventListener("appmessage",
         };
 
     });
+
+function min_peak(v){
+    var length = v.length;
+    for (i=1; i< length-1;i++)
+    {
+        if((v[i-1]>=v[i]) && (v[i] <= v[i+1]))
+        {
+            return i;
+        }  
+    }
+}
+
+function max_peak(v){
+    var length = v.length;
+    for (i=1; i< length-1;i++)
+    {
+        if((v[i-1]<=v[i]) && (v[i] >= v[i+1]))
+        {
+            return i;
+        }  
+    }
+}
