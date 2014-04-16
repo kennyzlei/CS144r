@@ -85,7 +85,7 @@ void tap_handler(AccelAxisType axis, int32_t direction)
   {
 	 
   accel_data_service_subscribe(25, accel_handler);
-  accel_service_set_sampling_rate(ACCEL_SAMPLING_50HZ);
+  accel_service_set_sampling_rate(ACCEL_SAMPLING_25HZ);
     tap_text[1] = 'Y';
   } else if (axis == ACCEL_AXIS_Z)
   {

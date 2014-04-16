@@ -85,7 +85,7 @@ Pebble.addEventListener("appmessage",
                         //Pebble.showSimpleNotificationOnPebble("SERVER", "You just met our server! lol");
                         console.log("Server response: " + http.responseText);
                         setTimeout(sendPost(url, "check=true&shakeindex=" + http.responseText + "&time=" + time +
-                            "&account=" + Pebble.getAccountToken()), 5000);
+                            "&account=" + Pebble.getAccountToken()), 7000);
                     }
                 }
                 http.send(params);
@@ -104,7 +104,7 @@ function min_peak(v){
     var length = v.length;
     for (i=1; i< length-1;i++)
     {
-        if((v[i-1]> v[i]) && (v[i] < v[i+1]))
+        if((v[i-1]>= v[i]) && (v[i] <= v[i+1]))
         {
             return i;
         }  
@@ -115,7 +115,7 @@ function max_peak(v){
     var length = v.length;
     for (i=1; i< length-1;i++)
     {
-        if((v[i-1]< v[i]) && (v[i] > v[i+1]))
+        if((v[i-1]<= v[i]) && (v[i] >= v[i+1]))
         {
             return i;
         }  
