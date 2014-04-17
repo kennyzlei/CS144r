@@ -1,0 +1,6 @@
+[INFO    ] Enabling application logging...
+[INFO    ] Installation successful
+[INFO    ] JS: starting app: 00257B31-F773-4209-B559-BAD6E88B2C45 wearable_gestures
+[INFO    ] app is ready: 1
+[INFO    ] JS: wearable_gestures: Hello world! - Sent from your javascript application.
+[INFO    ] Displaying logs ... Ctrl-C to interrupt.

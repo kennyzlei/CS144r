@@ -135,3 +135,15 @@ function max_peak(v){
         }  
     }
 }
+
+Pebble.addEventListener("showConfiguration", function() {
+  console.log("showing configuration");
+  Pebble.openURL('http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/pebble-js/configurable.html');
+});
+
+Pebble.addEventListener("webviewclosed",
+  function(e) {
+    var configuration = JSON.parse(decodeURIComponent(e.response));
+    console.log("Configuration window returned: ", JSON.stringify(configuration));
+  }
+);

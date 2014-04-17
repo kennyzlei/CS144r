@@ -3,7 +3,7 @@
   "shortName": "weShake",
   "longName": "weShake",
   "companyName": "Benjy,David,kenny",
-  "capabilities": ["location"],
+  "capabilities": ["location","configurable"],
   "versionCode": 1,
   "versionLabel": "1.6.9",
   "watchapp": {

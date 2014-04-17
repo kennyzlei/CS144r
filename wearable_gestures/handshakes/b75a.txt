@@ -1,0 +1,83 @@
+[INFO    ] Enabling application logging...
+[INFO    ] Installation successful
+[INFO    ] JS: starting app: 00257B31-F773-4209-B559-BAD6E88B2C45 wearable_gestures
+[INFO    ] app is ready: 1
+[INFO    ] JS: wearable_gestures: Hello world! - Sent from your javascript application.
+[INFO    ] Displaying logs ... Ctrl-C to interrupt.
+[INFO    ] JS: wearable_gestures: undefinedundefinedundefined
+1960
+848
+-72
+-480
+-600
+-888
+-1152
+-1512
+-2192
+-2192
+-584
+1744
+2912
+3496
+3640
+3160
+2584
+1648
+1104
+328
+-160
+-472
+-848
+-1232
+undefinedundefined
+576
+528
+632
+696
+800
+824
+928
+1000
+1056
+1104
+1096
+1072
+1088
+1064
+1040
+1008
+944
+864
+800
+552
+392
+496
+568
+520
+undefinedundefined
+536
+504
+496
+512
+440
+416
+416
+424
+416
+424
+416
+416
+424
+416
+432
+424
+432
+440
+440
+424
+432
+408
+416
+408
+
+[INFO    ] JS: wearable_gestures: Successfully delivered message with transactionId=0
