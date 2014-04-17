@@ -69,10 +69,11 @@ Pebble.addEventListener("appmessage",
             );
              //console.log("BUFFFFFFFEERRRRR: " + buffer);
 		//console.log(buffer);
-		console.log("min: " + min_peak(vector));
-		console.log("max: " + max_peak(vector));		
+        var filtered = filter(vector);
+		console.log("min: " + min_peak(filtered));
+		console.log("max: " + max_peak(filtered));		
 		console.log(vector);
-		var peak_diff = Math.abs(max_peak(vector)-min_peak(vector));
+		var peak_diff = Math.abs(max_peak(filtered)-min_peak(filtered));
 		vector =[];
         console.log("peak difference is: " + peak_diff);
 
@@ -134,6 +135,20 @@ function max_peak(v){
             return i;
         }  
     }
+}
+
+function filter(v){
+    var N = v.length;
+    var a = .2;
+    S = new Array();
+    S.push(v[0]);
+    for (i=2;i < N-2;i++)
+    {
+        S.push((a*v[i-2]+a*v[i-1]+a*v[i]+a*v[i+1]+a*v[i+2]));
+    }
+    S.push(v[N-1]);
+
+    return S;
 }
 
 Pebble.addEventListener("showConfiguration", function() {
