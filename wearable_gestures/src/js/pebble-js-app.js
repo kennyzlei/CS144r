@@ -2,10 +2,33 @@ var buffer;
 var vector = new Array();
 var count = 0;
 
+var user = 
+{
+	"name":"unknown",
+	"phonenumber":"unkown",
+	"email":"unknwon",
+	"special-feature":"off",
+	"checkbox-facebook":false,
+	"checkbox-linkedin":false,
+	"checkbox-googleplus":false,
+	"checkbox-twitter":false
+};
+
 Pebble.addEventListener("ready",
     function (e) {
         console.log("Hello world! - Sent from your javascript application.");
-    }
+
+
+	for(key in user) {
+		var val = window.localStorage.getItem(key);
+		user[key] = val;
+		//if(val != null) {
+		//	url += "&" + encodeURIComponent(key) + "=" + encodeURIComponent(val);
+		}
+
+	
+	console.log(user["name"]);
+}
 );
 
 function sendPost(url, params) {
@@ -144,6 +167,12 @@ Pebble.addEventListener("showConfiguration", function() {
 Pebble.addEventListener("webviewclosed",
   function(e) {
     var configuration = JSON.parse(decodeURIComponent(e.response));
+
+	for(key in configuration) {
+			window.localStorage.setItem(key, configuration[key]);
+		}
+
+
     console.log("Configuration window returned: ", JSON.stringify(configuration));
   }
 );
