@@ -95,6 +95,7 @@ Pebble.addEventListener("appmessage",
         var filtered = filter(vector);
 		console.log("min: " + min_peak(filtered));
 		console.log("max: " + max_peak(filtered));		
+		console.log(filtered);
 		console.log(vector);
 		var peak_diff = Math.abs(max_peak(filtered)-min_peak(filtered));
 		vector =[];
