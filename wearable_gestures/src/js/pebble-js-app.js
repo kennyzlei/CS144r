@@ -138,7 +138,7 @@ function max_peak(v){
 
 Pebble.addEventListener("showConfiguration", function() {
   console.log("showing configuration");
-  Pebble.openURL('http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/pebble-js/configurable.html');
+  Pebble.openURL('http://kennyzlei.github.io/CS144r');//'http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/pebble-js/configurable.html');
 });
 
 Pebble.addEventListener("webviewclosed",
