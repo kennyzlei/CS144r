@@ -170,7 +170,7 @@ void tap_handler(AccelAxisType axis, int32_t direction)
   {
 	 
   accel_data_service_subscribe(25, accel_handler);
-  accel_service_set_sampling_rate(ACCEL_SAMPLING_50HZ);
+  accel_service_set_sampling_rate(ACCEL_SAMPLING_10HZ);
   static char recording_text[] = "Recording the Shakes...";
   text_layer_set_text(text_status_layer, recording_text);
     tap_text[1] = 'Y';
