@@ -19,15 +19,14 @@ Pebble.addEventListener("ready",
         console.log("Hello world! - Sent from your javascript application.");
 
 
-	for(key in user) {
+	for(key in user) 
+	{
 		var val = window.localStorage.getItem(key);
 		user[key] = val;
-		//if(val != null) {
-		//	url += "&" + encodeURIComponent(key) + "=" + encodeURIComponent(val);
-		}
+	}
 
 	
-	console.log(user["name"]);
+	//console.log(user["name"]);
 }
 );
 
