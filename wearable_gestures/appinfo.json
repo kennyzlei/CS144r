@@ -1,11 +1,11 @@
 {
   "uuid": "00257b31-f773-4209-b559-bad6e88b2c45",
-  "shortName": "wearable_gestures",
-  "longName": "wearable_gestures",
-  "companyName": "MakeAwesomeHappen",
+  "shortName": "weShake",
+  "longName": "weShake",
+  "companyName": "Benjy,David,kenny",
   "capabilities": ["location"],
   "versionCode": 1,
-  "versionLabel": "1.0.0",
+  "versionLabel": "1.6.9",
   "watchapp": {
     "watchface": false
   },
@@ -13,6 +13,11 @@
     "dummy": 0
   },
   "resources": {
-    "media": []
+    "media": [  {
+          "type": "png",
+          "name": "WESHAKE_MENU_ICON",
+          "file": "images/weShake.png",
+	  "menuIcon": "true"
+    }]
   }
 }

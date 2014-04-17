@@ -18,7 +18,21 @@ function sendPost(url, params) {
 
     http.onreadystatechange = function () { //Call a function when the state changes.
         if (http.readyState == 4 && http.status == 200) {
+   
             Pebble.showSimpleNotificationOnPebble("SERVER", "Match: " + http.responseText);
+         
+    	    var transactionId = Pebble.sendAppMessage({
+                    "2": "2"
+                },
+                function (e) {
+                    console.log("Successfully delivered message with transactionId=" + e.data.transactionId);
+                },
+                function (e) {
+                    console.log("Unable to deliver message with transactionId=" + e.data.transactionId + " Error is: " +
+                        e.error.message);
+                }
+            );
+
             console.log("Server response: " + http.responseText);
         }
     }
