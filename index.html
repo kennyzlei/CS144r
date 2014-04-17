@@ -21,8 +21,13 @@
         </div>
 
 	<div data-role="fieldcontain">
-          <label for="name">Phone Number:</label>
+          <label for="phonenumber">Phone Number:</label>
           <textarea cols="40" rows="8" name="phonenumber" id="phonenumber"></textarea>
+        </div>
+        
+       	<div data-role="fieldcontain">
+          <label for="email">Phone Number:</label>
+          <textarea cols="40" rows="8" name="email" id="email"></textarea>
         </div>
 
         <div data-role="fieldcontain">
@@ -64,6 +69,8 @@
       function saveOptions() {
         var options = {
           'name': $("#name").val(),
+          'phonenumber': $("#phonenumber").val(),
+          'email': $("#email").val(),
           'special-feature': $("#special-feature").val(),
           'checkbox-facebook': $("#checkbox-facebook").is(':checked'),
           'checkbox-linkedin': $("#checkbox-linkedin").is(':checked'),
