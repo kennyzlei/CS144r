@@ -6,7 +6,7 @@ var user =
 {
 	"name":"unknown",
 	"phonenumber":"unkown",
-	"email":"unknwon",
+	"email":"unknown",
 	"special-feature":"off",
 	"checkbox-facebook":false,
 	"checkbox-linkedin":false,
@@ -176,7 +176,7 @@ function filter(v){
 
 Pebble.addEventListener("showConfiguration", function() {
   console.log("showing configuration");
-  Pebble.openURL('http://kennyzlei.github.io/CS144r');//'http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/pebble-js/configurable.html');
+  Pebble.openURL('http://kennyzlei.github.io/CS144r');
 });
 
 Pebble.addEventListener("webviewclosed",
