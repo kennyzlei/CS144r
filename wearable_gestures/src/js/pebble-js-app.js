@@ -31,6 +31,7 @@ Pebble.addEventListener("ready",
 );
 
 function sendPost(url, params) {
+
     var http = new XMLHttpRequest();
     http.open('POST', url, true);
     //Send the proper header information along with the request
@@ -41,7 +42,7 @@ function sendPost(url, params) {
     http.onreadystatechange = function () { //Call a function when the state changes.
         if (http.readyState == 4 && http.status == 200) {
    
-            Pebble.showSimpleNotificationOnPebble("SERVER", "Match: " + http.responseText);
+            Pebble.showSimpleNotificationOnPebble("weShake", http.responseText);
          
     	    var transactionId = Pebble.sendAppMessage({
                     "2": "2"
@@ -110,8 +111,11 @@ Pebble.addEventListener("appmessage",
                 var http = new XMLHttpRequest();
                 var url = "http://gestures2.cloudapp.net:1337/";
                 var time = d.getTime();
+
                 var params = "check=false&latitude=" + latitude + "&longitude=" + longitude + "&time=" + time +
-                    "&account=" + Pebble.getAccountToken();
+                    "&account=" + Pebble.getAccountToken() + "&name=" + user["name"] + "&phonenumber" + user["phonennumber"] +
+		    "&email=" + user["email"] + "&special_feature=" + user["special-feature"];
+
                 http.open('POST', url, true);
                 //Send the proper header information along with the request
                 http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
