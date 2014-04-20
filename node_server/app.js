@@ -50,14 +50,17 @@ http.createServer(function (request, response) {
             for(i=0; i<shake[formData.shakeindex].length(); i++) {
                 if (shake[formData.shakeindex].get(i)[0] != formData.account){
                     if (Math.abs(formData.time - shake[formData.shakeindex].get(i)[1]) < min) {
-                        account = shake[formData.shakeindex].get(i)[0];
+                        //account = shake[formData.shakeindex].get(i)[0];
+                        entry = shake[formData.shakeindex].get(i);
                         min = Math.abs(formData.time - shake[formData.shakeindex].get(i)[1]);
                     }
                 }
             }
             response.writeHead(200, {'Content-Type': 'text/plain'});
             if (min < 2000) {
-                response.end(account);
+                response.write(entry[2]+"/n");
+                response.write(entry[3]+"/n");
+                response.end(entry[2]);
             }
             else {
                 response.end("No match");
@@ -70,7 +73,7 @@ http.createServer(function (request, response) {
             set = false;
             while (i < shake.length) {
                 if (Math.sqrt(Math.pow(shake[i].latitude - formData.latitude, 2) + Math.pow(shake[i].longitude - formData.longitude, 2)) < 1000){
-                    shake[i].push([formData.account, formData.time]);
+                    shake[i].push([formData.account, formData.time, formData.name, formData.phonennumber, formData.email]);
                     set = true;
                     break;
                 }
@@ -78,7 +81,7 @@ http.createServer(function (request, response) {
             }
             if (set == false) {
                 new_shake = new Stack(formData.latitude, formData.longitude);
-                new_shake.push([formData.account, formData.time]);
+                new_shake.push([formData.account, formData.time, formData.name, formData.phonennumber, formData.email]);
                 shake.push(new_shake);
             }
             response.writeHead(200, {'Content-Type': 'text/plain'});
