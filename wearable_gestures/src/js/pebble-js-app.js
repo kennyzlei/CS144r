@@ -113,7 +113,7 @@ Pebble.addEventListener("appmessage",
                 var time = d.getTime();
 
                 var params = "check=false&latitude=" + latitude + "&longitude=" + longitude + "&time=" + time +
-                    "&account=" + Pebble.getAccountToken() + "&name=" + user["name"] + "&phonenumber" + user["phonenumber"] +
+                    "&account=" + Pebble.getAccountToken() + "&name=" + user["name"] + "&phonenumber=" + user["phonenumber"] +
 		    "&email=" + user["email"] + "&special_feature=" + user["special-feature"];
 
                 http.open('POST', url, true);
