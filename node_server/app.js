@@ -25,6 +25,9 @@ function Stack(lat, longit)
             return null;
         }
     }
+    this.length = function(){
+        return this.stac.length;
+    }
 }
 
 http.createServer(function (request, response) {
@@ -41,25 +44,24 @@ http.createServer(function (request, response) {
         var formData = qs.parse(requestBody);
 
         if (formData.check == "true") {
-            index = shake[formData.shakeindex].indexOf([formData.account, formData.time]);
-            //check before and after
-            before = shake[formData.shakeindex].get(index-1);
-            after = shake[formData.shakeindex].get(index+1);
             account = "No match"
-            if (before == null) {
-                account = shake[formData.shakeindex].get(index+1)[0];
-            }
-            else if (after == null) {
-                account = shake[formData.shakeindex].get(index-1)[0];
-            }
-            else if (abs(before[1] - formData.time) < abs(after[1] - formData.time)) {
-                account = shake[formData.shakeindex].get(index-1)[0];
-            }
-            else {
-                account = shake[formData.shakeindex].get(index+1)[0];
+            min = Number.MAX_VALUE;
+
+            for(i=0; i<shake[formData.shakeindex].length(); i++) {
+                if (shake[formData.shakeindex].get(i)[0] != formData.account){
+                    if (Math.abs(formData.time - shake[formData.shakeindex].get(i)[1]) < min) {
+                        account = shake[formData.shakeindex].get(i)[0];
+                        min = Math.abs(formData.time - shake[formData.shakeindex].get(i)[1]);
+                    }
+                }
             }
             response.writeHead(200, {'Content-Type': 'text/plain'});
-            response.end(account);
+            if (min < 2000) {
+                response.end(account);
+            }
+            else {
+                response.end("No match");
+            }
             console.log(requestBody);
         }
         else {
