@@ -43,7 +43,7 @@ function sendPost(url, params) {
    
             Pebble.showSimpleNotificationOnPebble("SERVER", "Match: " + http.responseText);
          
-    	    var transactionId = Pebble.sendAppMessage({
+    	   /* var transactionId = Pebble.sendAppMessage({
                     "2": "2"
                 },
                 function (e) {
@@ -53,7 +53,7 @@ function sendPost(url, params) {
                     console.log("Unable to deliver message with transactionId=" + e.data.transactionId + " Error is: " +
                         e.error.message);
                 }
-            );
+            );*/
 
             console.log("Server response: " + http.responseText);
         }
@@ -117,13 +117,12 @@ Pebble.addEventListener("appmessage",
                 http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 http.setRequestHeader("Content-length", params.length);
                 http.setRequestHeader("Connection", "close");
-
                 http.onreadystatechange = function () { //Call a function when the state changes.
                     if (http.readyState == 4 && http.status == 200) {
                         //Pebble.showSimpleNotificationOnPebble("SERVER", "You just met our server! lol");
                         console.log("Server response: " + http.responseText);
-                        setTimeout(sendPost(url, "check=true&shakeindex=" + http.responseText + "&time=" + time +
-                            "&account=" + Pebble.getAccountToken()), 7000);
+                        setTimeout(function(){sendPost(url, "check=true&shakeindex=" + http.responseText + "&time=" + time +
+                            "&account=" + Pebble.getAccountToken())}, 3000);
                     }
                 }
                 http.send(params);
