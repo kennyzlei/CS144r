@@ -43,7 +43,7 @@ function sendPost(url, params) {
    
             Pebble.showSimpleNotificationOnPebble("SERVER", "Match: " + http.responseText);
          
-    	   /* var transactionId = Pebble.sendAppMessage({
+    	    var transactionId = Pebble.sendAppMessage({
                     "2": "2"
                 },
                 function (e) {
@@ -53,7 +53,7 @@ function sendPost(url, params) {
                     console.log("Unable to deliver message with transactionId=" + e.data.transactionId + " Error is: " +
                         e.error.message);
                 }
-            );*/
+            );
 
             console.log("Server response: " + http.responseText);
         }
