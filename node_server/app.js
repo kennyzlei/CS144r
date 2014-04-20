@@ -58,9 +58,9 @@ http.createServer(function (request, response) {
             }
             response.writeHead(200, {'Content-Type': 'text/plain'});
             if (min < 2000) {
-                response.write(entry[2]+"/n");
-                response.write(entry[3]+"/n");
-                response.end(entry[2]);
+                response.write(entry[2]+"\n");
+                response.write(entry[3]+"\n");
+                response.end(entry[4]);
             }
             else {
                 response.end("No match");
