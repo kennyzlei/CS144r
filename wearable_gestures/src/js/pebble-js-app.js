@@ -66,7 +66,7 @@ Pebble.addEventListener("appmessage",
     function (e) {
 
 
-        if (count < 2) {
+        if (count < 1) {
             var output;
             for (var i = 0; i < 25; i++) {
                 var onemeasure = e.payload[i] + "\n";
