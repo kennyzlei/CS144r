@@ -73,7 +73,7 @@ http.createServer(function (request, response) {
             set = false;
             while (i < shake.length) {
                 if (Math.sqrt(Math.pow(shake[i].latitude - formData.latitude, 2) + Math.pow(shake[i].longitude - formData.longitude, 2)) < 1000){
-                    shake[i].push([formData.account, formData.time, formData.name, formData.phonennumber, formData.email]);
+                    shake[i].push([formData.account, formData.time, formData.name, formData.phonenumber, formData.email]);
                     set = true;
                     break;
                 }
@@ -81,7 +81,7 @@ http.createServer(function (request, response) {
             }
             if (set == false) {
                 new_shake = new Stack(formData.latitude, formData.longitude);
-                new_shake.push([formData.account, formData.time, formData.name, formData.phonennumber, formData.email]);
+                new_shake.push([formData.account, formData.time, formData.name, formData.phonenumber, formData.email]);
                 shake.push(new_shake);
             }
             response.writeHead(200, {'Content-Type': 'text/plain'});
