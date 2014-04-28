@@ -66,7 +66,7 @@ Pebble.addEventListener("appmessage",
     function (e) {
 
 
-        if (count < 3) {
+        if (count < 2) {
             var output;
             for (var i = 0; i < 25; i++) {
                 var onemeasure = e.payload[i] + "\n";
@@ -77,7 +77,7 @@ Pebble.addEventListener("appmessage",
             //console.log(count + ": " + output);
             buffer += output;
             count++;
-        } else if (count == 3) {
+        } else if (count == 2) {
             //appmessage send phone to cancel
             var transactionId = Pebble.sendAppMessage({
                     "1": "1"
@@ -114,7 +114,7 @@ Pebble.addEventListener("appmessage",
 
                 var params = "check=false&latitude=" + latitude + "&longitude=" + longitude + "&time=" + time +
                     "&account=" + Pebble.getAccountToken() + "&name=" + user["name"] + "&phonenumber=" + user["phonenumber"] +
-		    "&email=" + user["email"] + "&special_feature=" + user["special-feature"];
+		    "&email=" + user["email"] + "&special_feature=" + user["special-feature"] + "&acceleration=" + filtered;
 
                 http.open('POST', url, true);
                 //Send the proper header information along with the request
