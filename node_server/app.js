@@ -120,6 +120,7 @@ http.createServer(function (request, response) {
         if (formData.check == "true") {
             account = "No match"
             min = Number.MAX_VALUE;
+            formData.acceleration = formData.acceleration.split(",").map(function(d){return +d;});
 
             for(i=0; i<shake[formData.shakeindex].length(); i++) {
                 if (shake[formData.shakeindex].get(i)[0] != formData.account){
@@ -134,9 +135,10 @@ http.createServer(function (request, response) {
             if (min < 2000) {
                 response.write(entry[2]+"\n");
                 response.write(entry[3]+"\n");
+                response.write(shiftCompare(entry[5], formData.acceleration).toString())
                 response.end(entry[4]);
+
                 console.log("Entry 5:");
-                console.log(entry[5]);
                 console.log(shiftCompare(entry[5], formData.acceleration));
             }
             else {
@@ -148,9 +150,10 @@ http.createServer(function (request, response) {
             //place in array
             i = 0;
             set = false;
+            formData.acceleration = formData.acceleration.split(",").map(function(d){return +d;});
             while (i < shake.length) {
                 if (Math.sqrt(Math.pow(shake[i].latitude - formData.latitude, 2) + Math.pow(shake[i].longitude - formData.longitude, 2)) < 1000){
-                    shake[i].push([formData.account, formData.time, formData.name, formData.phonenumber, formData.email, formData.acceleration.split(",")]);
+                    shake[i].push([formData.account, formData.time, formData.name, formData.phonenumber, formData.email, formData.acceleration]);
                     set = true;
                     break;
                 }
@@ -158,7 +161,7 @@ http.createServer(function (request, response) {
             }
             if (set == false) {
                 new_shake = new Stack(formData.latitude, formData.longitude);
-                new_shake.push([formData.account, formData.time, formData.name, formData.phonenumber, formData.email, formData.acceleration.split(",")]);
+                new_shake.push([formData.account, formData.time, formData.name, formData.phonenumber, formData.email, formData.acceleration]);
                 shake.push(new_shake);
             }
             response.writeHead(200, {'Content-Type': 'text/plain'});
