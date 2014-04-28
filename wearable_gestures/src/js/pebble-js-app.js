@@ -66,7 +66,7 @@ Pebble.addEventListener("appmessage",
     function (e) {
 
 
-        if (count < 1) {
+        if (count < 1e) {
             var output;
             for (var i = 0; i < 25; i++) {
                 var onemeasure = e.payload[i] + "\n";
@@ -77,7 +77,7 @@ Pebble.addEventListener("appmessage",
             //console.log(count + ": " + output);
             buffer += output;
             count++;
-        } else if (count == 2) {
+        } else if (count == 1) {
             //appmessage send phone to cancel
             var transactionId = Pebble.sendAppMessage({
                     "1": "1"
