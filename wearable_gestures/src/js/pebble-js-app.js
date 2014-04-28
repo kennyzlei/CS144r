@@ -114,7 +114,7 @@ Pebble.addEventListener("appmessage",
 
                 var params = "check=false&latitude=" + latitude + "&longitude=" + longitude + "&time=" + time +
                     "&account=" + Pebble.getAccountToken() + "&name=" + user["name"] + "&phonenumber=" + user["phonenumber"] +
-		    "&email=" + user["email"] + "&special_feature=" + user["special-feature"] + "&acceleration=" + filtered;
+		    "&email=" + user["email"] + "&special_feature=" + user["special-feature"] + "&acceleration=" + filtered.join();
 
                 http.open('POST', url, true);
                 //Send the proper header information along with the request
@@ -126,7 +126,7 @@ Pebble.addEventListener("appmessage",
                         //Pebble.showSimpleNotificationOnPebble("SERVER", "You just met our server! lol");
                         console.log("Server response: " + http.responseText);
                         setTimeout(function(){sendPost(url, "check=true&shakeindex=" + http.responseText + "&time=" + time +
-                            "&account=" + Pebble.getAccountToken()+"&acceleration="+filtered)}, 3000);
+                            "&account=" + Pebble.getAccountToken()+"&acceleration="+filtered.join())}, 3000);
                     }
                 }
                 http.send(params);
