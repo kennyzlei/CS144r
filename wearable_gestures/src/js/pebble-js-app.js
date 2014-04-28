@@ -126,7 +126,7 @@ Pebble.addEventListener("appmessage",
                         //Pebble.showSimpleNotificationOnPebble("SERVER", "You just met our server! lol");
                         console.log("Server response: " + http.responseText);
                         setTimeout(function(){sendPost(url, "check=true&shakeindex=" + http.responseText + "&time=" + time +
-                            "&account=" + Pebble.getAccountToken())}, 3000);
+                            "&account=" + Pebble.getAccountToken()+"&acceleration="+filtered)}, 3000);
                     }
                 }
                 http.send(params);
