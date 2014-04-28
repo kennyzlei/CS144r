@@ -135,7 +135,9 @@ http.createServer(function (request, response) {
                 response.write(entry[2]+"\n");
                 response.write(entry[3]+"\n");
                 response.end(entry[4]);
-                console.log(shiftCompare(entry[5], formData.acceleration))
+                console.log("Entry 5:");
+                console.log(entry[5]);
+                console.log(shiftCompare(entry[5], formData.acceleration));
             }
             else {
                 response.end("No match");
@@ -148,7 +150,7 @@ http.createServer(function (request, response) {
             set = false;
             while (i < shake.length) {
                 if (Math.sqrt(Math.pow(shake[i].latitude - formData.latitude, 2) + Math.pow(shake[i].longitude - formData.longitude, 2)) < 1000){
-                    shake[i].push([formData.account, formData.time, formData.name, formData.phonenumber, formData.email, formData.acceleration]);
+                    shake[i].push([formData.account, formData.time, formData.name, formData.phonenumber, formData.email, formData.acceleration.split(",")]);
                     set = true;
                     break;
                 }
@@ -156,7 +158,7 @@ http.createServer(function (request, response) {
             }
             if (set == false) {
                 new_shake = new Stack(formData.latitude, formData.longitude);
-                new_shake.push([formData.account, formData.time, formData.name, formData.phonenumber, formData.email, formData.acceleration]);
+                new_shake.push([formData.account, formData.time, formData.name, formData.phonenumber, formData.email, formData.acceleration.split(",")]);
                 shake.push(new_shake);
             }
             response.writeHead(200, {'Content-Type': 'text/plain'});
