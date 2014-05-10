@@ -1,5 +1,0 @@
-sed '/[INFO    ]/d' bk2.txt > temp.txt 2>&1
-
-sed '/undefined/d' temp.txt > temp2.txt
-
-sed '/^$/d' temp2.txt > bk2.csv
