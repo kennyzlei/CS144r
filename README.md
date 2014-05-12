@@ -1,5 +1,10 @@
-CS144r - weShake - Wearable Gestures - David Boone, Kenny Lei, Benjy Levin
-==========================================================================
+weShake
+=======
+wearable technology with a purpose 
+----------------------------------
+David Boone, Kenny Lei, Benjy Levin
+-----------------------------------
+
 
 shift_server.js
 ---------------
