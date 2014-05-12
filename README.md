@@ -40,3 +40,4 @@ This file contains the meta data for the app such as our app logo, location serv
 /node_server/app.js
 -------------------
 
+This file contains the javascript code that is run on the Azure cloud server.  It handles POST requests and matches handshakes.
