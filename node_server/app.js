@@ -1,6 +1,11 @@
+/* app.js
+ * Node.js server code for weShake
+ */
+
 var http = require('http');
 var qs = require('querystring');
 
+//Shake data storage object
 var shake = new Array();
 
 function shiftCompare(a,b){
@@ -76,7 +81,7 @@ var multmag = maga*magb;
 return ((dotprod/multmag)*100);
 }
 
-
+//Stack data structure
 function Stack(lat, longit)
 {
     this.latitude = lat
@@ -106,6 +111,7 @@ function Stack(lat, longit)
 
 http.createServer(function (request, response) {
     var requestBody = "";
+    //when receive POST request, store data into requestBody
     if (request.method == "POST")
     	request.on('data', function(data) {
             requestBody += data;
@@ -114,9 +120,10 @@ http.createServer(function (request, response) {
                 response.end('<!doctype html><html><head><title>413</title></head><body>413: Request Entity Too Large</body></html>');
             }
     });
+    //when finished receiving POST request
     request.on('end', function() {
         var formData = qs.parse(requestBody);
-
+        //if second request
         if (formData.check == "true") {
             account = "No match"
             min = Number.MAX_VALUE;
@@ -131,6 +138,7 @@ http.createServer(function (request, response) {
                     }
                 }
             }
+            //write match data and send response
             response.writeHead(200, {'Content-Type': 'text/plain'});
             if (min < 2000) {
                 response.write(entry[2]+"\n");
@@ -146,6 +154,7 @@ http.createServer(function (request, response) {
             }
             console.log(requestBody);
         }
+        //if first request
         else {
             //place in array
             i = 0;
@@ -164,6 +173,7 @@ http.createServer(function (request, response) {
                 new_shake.push([formData.account, formData.time, formData.name, formData.phonenumber, formData.email, formData.acceleration]);
                 shake.push(new_shake);
             }
+            //write and send response
             response.writeHead(200, {'Content-Type': 'text/plain'});
             response.end(i.toString());
             console.log(requestBody);
